@@ -4,6 +4,9 @@ import About from './components/About';
 import NavBar from './components/NavBar';
 import OrderSummary from './components/OrderSummary';
 import NotFound from './components/NotFound';
+import Products from './components/Products';
+import Featured from './components/Featured';
+import New from './components/New';
 
 function App() {
   return (
@@ -16,6 +19,12 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
         <Route path='order-summary' element={<OrderSummary />} />
+        
+        {/* Nested routes to switch view of portion of a page */}
+        <Route path='products' element={<Products />}>
+            <Route path='featured' element={<Featured />} />
+            <Route path='new' element={<New />} />
+        </Route>
 
         <Route path='*' element={<NotFound />}></Route> 
       </Routes>
