@@ -22,6 +22,8 @@ function App() {
         
         {/* Nested routes to switch view of portion of a page */}
         <Route path='products' element={<Products />}>
+            <Route index element={<Featured />} />
+
             <Route path='featured' element={<Featured />} />
             <Route path='new' element={<New />} />
         </Route>
