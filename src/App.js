@@ -7,6 +7,9 @@ import NotFound from './components/NotFound';
 import Products from './components/Products';
 import Featured from './components/Featured';
 import New from './components/New';
+import Users from './components/users/Users';
+import Admin from './components/users/Admin';
+import UserDetails from './components/users/UserDetails';
 
 function App() {
   return (
@@ -26,6 +29,12 @@ function App() {
 
             <Route path='featured' element={<Featured />} />
             <Route path='new' element={<New />} />
+        </Route>
+
+        {/* dynamic routes */}
+        <Route path='users' element={<Users />}>
+            <Route path=':userId' element={<UserDetails />} />
+            <Route path='admin' element={<Admin />} />
         </Route>
 
         <Route path='*' element={<NotFound />}></Route> 
