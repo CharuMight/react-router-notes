@@ -10,6 +10,9 @@ import New from './components/New';
 import Users from './components/users/Users';
 import Admin from './components/users/Admin';
 import UserDetails from './components/users/UserDetails';
+import React, { Suspense } from 'react';
+
+const LazyAbout = React.lazy(() => import("./components/About"));
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
 
         <Route path='/' element={<Home />} />
         <Route path='about' element={<About />} />
+
         <Route path='order-summary' element={<OrderSummary />} />
         
         {/* Nested routes to switch view of portion of a page */}
@@ -36,6 +40,12 @@ function App() {
             <Route path=':userId' element={<UserDetails />} />
             <Route path='admin' element={<Admin />} />
         </Route>
+
+        <Route path='lazy-about' element={
+          <Suspense fallback={<h3>Loading...🔆</h3>}>
+            <LazyAbout />
+          </Suspense>} 
+        />
 
         <Route path='*' element={<NotFound />}></Route> 
       </Routes>
